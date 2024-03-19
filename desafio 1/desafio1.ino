@@ -19,14 +19,15 @@ void loop() {
   int tempoRestante = 0;
   int estadoBotao = digitalRead(botao);
   
-  int flag = 0;
+  int jaAcendeu = 0;
   
   digitalWrite(ledVerde, HIGH);//sinal aberto para veiculos
   
-  if (estadoBotao == 1 && !flag) { //caso botao seja pressionado
+  if (estadoBotao == 1 && !jaAcendeu) { //caso botao seja pressionado
     tempoPassado = millis();
     //reduz pela metade o tempo restante de espera
     tempoRestante = (10000 - tempoPassado)/2;
+    jaAcendeu = 1;
     delay(tempoRestante);//espera um tempo para abrir
   } else { //caso botao nao seja pressionado
     tempoRestante = 10000; //espera os 10s padrao
